@@ -66,7 +66,6 @@ public class ExecutableNode {
 	public static final String PASTATTEMPTS_PARAM = "pastAttempts";
 	
 	private int attempt = 0;
-	private int repeatTime = 0;
 	private long delayExecution = 0;
 	private ArrayList<ExecutionAttempt> pastAttempts = null;
 	
@@ -224,14 +223,6 @@ public class ExecutableNode {
 
 	public void setAttempt(int attempt) {
 		this.attempt = attempt;
-	}
-	
-	public int getRepeatTime() {
-		return repeatTime;
-	}
-
-	public void setRepeatTime(int repeatTime) {
-		this.repeatTime = repeatTime;
 	}
 	
 	public void resetForRetry() {
@@ -446,14 +437,6 @@ public class ExecutableNode {
 	
 	public long getRetryBackoff() {
 		return inputProps.getLong("retry.backoff", 0);
-	}
-	
-	public int getRepeats() {
-		return inputProps.getInt("repeats", 0);
-	}
-	
-	public long getRepeatBackoff() {
-		return inputProps.getLong("repeat.backoff", 0);
 	}
 }
 
