@@ -449,11 +449,11 @@ public class ExecutableNode {
 	}
 	
 	public int getRepeats() {
-		return inputProps.getInt("retries", 0);
+		return inputProps.getInt("repeats", 0);
 	}
 	
-	public long getRepeatsBackoff() {
-		return inputProps.getLong("retry.backoff", 0);
+	public long getRepeatBackoff() {
+		return inputProps.getLong("repeat.backoff", 0);
 	}
 }
 
