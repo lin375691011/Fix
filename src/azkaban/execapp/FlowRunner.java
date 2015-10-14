@@ -442,6 +442,14 @@ public class FlowRunner extends EventHandler implements Runnable {
 					continue;
 				}
 			}
+			else if(node.getStatus() == Status.SUCCEEDED && node.getRetryKeepGoing() == 1) {
+				
+				if (retryJobIfPossible(node)) {
+				
+					nodesToCheck.add(node);
+					continue;
+				}
+			}
 
 			if (outNodeIds.isEmpty()) {
 				// There's no outnodes means it's the end of a flow, so we finalize
