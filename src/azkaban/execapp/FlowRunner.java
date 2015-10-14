@@ -563,7 +563,7 @@ public class FlowRunner extends EventHandler implements Runnable {
 	}
 	
 	private void finalizeFlow(ExecutableFlowBase flow) {
-		String id = flow == this.flow ? "" : flow.getNestedId();
+		String id = (flow == this.flow) ? this.flow.getNestedId() : flow.getNestedId();
 
 		// If it's not the starting flow, we'll create set of output props
 		// for the finished flow.
