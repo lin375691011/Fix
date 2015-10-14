@@ -442,6 +442,14 @@ public class FlowRunner extends EventHandler implements Runnable {
 					continue;
 				}
 			}
+			else if(node.getStatus() == Status.SUCCEEDED && node.getRetryKeepGoing() == 1) {
+				
+				if (retryJobIfPossible(node)) {
+				
+					nodesToCheck.add(node);
+					continue;
+				}
+			}
 
 			if (outNodeIds.isEmpty()) {
 				// There's no outnodes means it's the end of a flow, so we finalize
@@ -563,7 +571,7 @@ public class FlowRunner extends EventHandler implements Runnable {
 	}
 	
 	private void finalizeFlow(ExecutableFlowBase flow) {
-		String id = flow == this.flow ? "" : flow.getNestedId();
+		String id = (flow == this.flow) ? this.flow.getNestedId() : flow.getNestedId();
 
 		// If it's not the starting flow, we'll create set of output props
 		// for the finished flow.

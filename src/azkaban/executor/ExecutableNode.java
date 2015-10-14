@@ -438,5 +438,9 @@ public class ExecutableNode {
 	public long getRetryBackoff() {
 		return inputProps.getLong("retry.backoff", 0);
 	}
+	
+	public long getRetryKeepGoing() {
+		return inputProps.getLong("retry.keepgoing", 0);
+	}
 }
 
